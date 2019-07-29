@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.branchiodemo">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+            android:name=".DemoApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+
+        <activity
+                android:name=".MainActivity"
+                android:label="@string/app_name"
+                android:launchMode="singleTask"
+                android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".BranchDeepLinkingActivity">
+
+            <!-- Branch URI Scheme -->
+            <intent-filter
+                    android:autoVerify="true"
+                    tools:ignore="UnusedAttribute">
+
+
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:host="giv14.test-app.link"/>
+                <data android:host="giv14-alternate.test-app.link"/>
+                <!--<data android:host="iem9.test-app.link"/>-->
+
+                <data android:scheme="androiddemo"/>
+                <data android:scheme="https"/>
+                <data android:scheme="http"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Branch init -->
+        <meta-data android:name="io.branch.sdk.BranchKey"
+                   android:value="key_live_hbKrFYLg29Lpn73lNIKgkghpuwggzdXq"/>
+
+        <meta-data android:name="io.branch.sdk.BranchKey.test"
+                   android:value="key_test_caRst6Mh93IcdY8kLJFT0epgurdjrm9a"/>
+
+        <meta-data android:name="io.branch.sdk.TestMode"
+                   android:value="true"/>
+
+    </application>
+
+</manifest>
